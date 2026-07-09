@@ -1,0 +1,21 @@
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form{
+    background-color: rgb(203, 166, 252);
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+button{
+    width: 100%;
+    margin-top: 10px;
+}
