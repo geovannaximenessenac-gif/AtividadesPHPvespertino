@@ -1,14 +1,21 @@
-<?php 
+<?php
 include "banco.php";
 
-$id = $_GET ['id'];
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    die("Erro: ID não informado.");
+}
 
-$sql ="SELECT * FROM form WHERE id = $id";
+$id = (int)$_GET['id'];
+
+$sql = "SELECT * FROM alunos WHERE id = $id";
 
 $resultado = $conexao->query($sql);
 
-$cliente = $resultado ->fetch_assoc();
+if ($resultado->num_rows == 0) {
+    die("Aluno não encontrado.");
+}
 
+$cliente = $resultado->fetch_assoc();
 ?>
 
 
@@ -48,14 +55,11 @@ $cliente = $resultado ->fetch_assoc();
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputPassword1" name="email" value="<?php  echo $cliente['email'];?>">
+    <label for="exampleInputPassword1" class="form-label">Curso</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="curso" value="<?php  echo $cliente['curso'];?>">
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Telefone</label>
-    <input type="tel" class="form-control" id="exampleInputPassword1" name="telefone" value="<?php  echo $cliente['telefone'];?>">
-  </div>
+ 
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Cidade</label>

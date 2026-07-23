@@ -3,7 +3,7 @@
 include "banco.php";
 
 //sql para selecionar todos os registros
-$sql ="SELECT * FROM form";
+$sql ="SELECT * FROM alunos";
 
 //criamos a variavel $resultado para guardar a consulta
 $resultado = $conexao->query($sql);
@@ -16,13 +16,13 @@ while ($cliente = $resultado->fetch_assoc()) {
 //mostro o campo nome da tabela form
     echo "Nome: ".$cliente['nome']."<br>";
     echo "Idade: ".$cliente['idade']."<br>";
+    echo "Curso: ".$cliente['curso']."<br>";
     echo "Cidade: ".$cliente['cidade']."<br>";
-    echo "Email: ".$cliente['email']."<br>";
-    echo "telefone: ".$cliente['telefone']."<br>";
+    
 
  echo "<a href='formulario.php?id=" . $cliente['id'] . "'> <button> cadastrar </button> </a>";
-    echo "<a href='editar_clientes.php?id=" . $cliente['id'] . "'> <button> Editar </button> </a>";
-    echo "<a href='excluir_cliente.php?id=" . $cliente['id'] . "'> <button> Excluir </button> </a>";
+   echo "<a href='editar_clientes.php?id=".$cliente['id']."' class='btn btn-warning'>Editar</a>";
+   echo "<a href='excluir_cliente.php?id=".$cliente['id']."' class='btn btn-danger'>Excluir</a>";
 
     echo "<hr>";
 }
